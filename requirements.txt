@@ -1,4 +1,4 @@
 requests==2.32.3
-django==3.2.25
+Django==5.1.2
 django-money==3.0.0
 django-rosetta==0.9.9
