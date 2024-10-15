@@ -2,3 +2,4 @@ requests==2.32.3
 Django==5.1.2
 django-money==3.0.0
 django-rosetta==0.9.9
+legacy-cgi==2.6.1
