@@ -48,7 +48,7 @@ class TPayIpnHandler(View):
                 probable_md5 = hashlib.md5(
                     f'{id_part}{payment_part}{secure_code}'.encode('utf-8'),
                 ).hexdigest()
-                get_price = '{:.2f}'.format(float(request.POST['tr_paid']))  # noqa: P101
+                get_price = f"{float(request.POST['tr_paid']):.2f}"
                 price_check = Decimal(get_price) == payment.price.amount
                 md5_check = data['md5sum'] == probable_md5
                 if price_check and md5_check and not payment.is_finished:

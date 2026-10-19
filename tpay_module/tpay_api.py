@@ -135,7 +135,7 @@ class TPayModule(object):
                     user,
                 )
                 return response_data
-        except BaseException:  # noqa: D104
+        except BaseException:  # noqa: B902
             pass
         return {}
 
@@ -154,7 +154,7 @@ class TPayModule(object):
                 json=data, headers=self.get_headers(),
             ).json()
             return response_data
-        except BaseException:
+        except BaseException:  # noqa: B902
             pass
         return {}
 
@@ -173,7 +173,7 @@ class TPayModule(object):
                 json=data, headers=self.get_headers(),
             ).json()
             return response_data
-        except BaseException:
+        except BaseException:  # noqa: B902
             pass
         return {}
 
@@ -185,7 +185,7 @@ class TPayModule(object):
                 json={}, headers=self.get_headers(),
             ).json()
             return response_data
-        except BaseException:
+        except BaseException:  # noqa: B902
             pass
         return {}
 
@@ -204,7 +204,7 @@ class TPayModule(object):
                 json=filter_data, headers=self.get_headers(),
             ).json()
             return response_data
-        except BaseException:
+        except BaseException:  # noqa: B902
             pass
         return {}
 
