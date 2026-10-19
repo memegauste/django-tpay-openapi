@@ -1,6 +1,5 @@
 """Test TPay views."""
 # Standard Library
-import cgi
 import hashlib
 import random
 import string
@@ -54,8 +53,7 @@ class TestViews(TestCase):
             'tr_paid': 0.01,
             'tr_status': TPayIPNForm.SUCCESS_STATUS,
         })
-        charset = cgi.parse_header(
-            response.headers['Content-Type'])[1]['charset']
+        charset = response.charset
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content.decode(charset), 'FALSE')
 
@@ -74,8 +72,7 @@ class TestViews(TestCase):
             'tr_status': TPayIPNForm.SUCCESS_STATUS,
             'md5sum': md5sum,
         })
-        charset = cgi.parse_header(
-            response.headers['Content-Type'])[1]['charset']
+        charset = response.charset
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content.decode(charset), 'FALSE')
 
@@ -84,7 +81,7 @@ class TestViews(TestCase):
         """Test tpay ipn if request is empty."""
         url = reverse('tpay_ipn')
         payment = TPayPaymentFactory()
-        get_price = '{:.2f}'.format(payment.price.amount)  # noqa: P101
+        get_price = f'{payment.price.amount:.2f}'
         payment_part = f'{get_price}{payment.number}'
         data_id = random.randint(1000000000, 9999999999)
         data_tr_id = random.randint(1000000000, 9999999999)
@@ -100,8 +97,7 @@ class TestViews(TestCase):
             'tr_status': TPayIPNForm.SUCCESS_STATUS,
             'md5sum': md5sum,
         })
-        charset = cgi.parse_header(
-            response.headers['Content-Type'])[1]['charset']
+        charset = response.charset
         self.assertEqual(response.status_code, 200)
         payment.refresh_from_db()
         self.assertTrue(payment.is_finished)

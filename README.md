@@ -35,6 +35,20 @@ path('tpay-ipn/', TPayIpnHandler.as_view(), name='tpay_ipn'),
 Then, write code that will handle payments using TPayModule class.  
 The examples will be providen soon (how to create transaction and et cetera).
 
+### Running checks:
+Install the test and lint dependencies, then run the same checks as GitHub Actions:
+
+```sh
+python -m pip install -r requirements_tests.txt
+python -m pip check
+python -m pytest --cov=testapp --cov=tpay_module --cov-report term-missing
+python -m flake8 .
+```
+
+CI tests Python 3.12, 3.13, 3.14, and 3.15 with Django 5.2 LTS.
+Django 5.2 officially supports Python through 3.14; Python 3.15 is additionally tested here.
+`requirements_dev.txt` includes these dependencies plus optional development tools.
+
 ### Django available custom settings:
 `TPAY_CLIENT_ID` - client ID from tpay settings.  
 `TPAY_CLIENT_SECRET` - secret from tpay settings.  

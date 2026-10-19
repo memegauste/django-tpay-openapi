@@ -11,8 +11,8 @@ setup(
         ],
     ),
     install_requires=[
-        'requests==2.32.3',
-        'django==5.1.2',
-        'django-money==3.0.0',
+        'requests==2.34.2',
+        'django==5.2.18',
+        'django-money==3.6.2',
     ],
 )
